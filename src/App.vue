@@ -16,6 +16,12 @@ import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
         <div>
           <RouterLink to="/errorTest">Error test</RouterLink>
         </div>
+        <div>
+          <RouterLink to="/showVars">Show vars</RouterLink>
+        </div>
+        <div>
+          <RouterLink to="/dependentQueries">Dependent queries</RouterLink>
+        </div>
       </nav>
     </div>
   </header>

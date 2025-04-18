@@ -12,8 +12,6 @@ interface User {
 
 const getResource = async (): Promise<User[]> => {
   const { data } = await axios.get('https://reqres.in/api/test/99')
-
-  console.log('getResource', data.data) ////
   return data.data
 }
 

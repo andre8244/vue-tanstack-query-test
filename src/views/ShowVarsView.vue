@@ -15,15 +15,17 @@ const getUsers = async (): Promise<User[]> => {
   return data.data
 }
 
-const { isPending, isError, data, error } = useQuery({
-  queryKey: ['users'],
+const { isPending, isError, isFetching, fetchStatus, data, error } = useQuery({
+  queryKey: ['showVars'],
   queryFn: getUsers,
 })
 </script>
 
 <template>
   <div>
-    <h1>Simple</h1>
+    <h1>Show vars</h1>
+    <div>fetchStatus: {{ fetchStatus }}</div>
+    <div v-if="isFetching">isFetching...</div>
     <div v-if="isPending">isPending...</div>
     <div v-else-if="isError">An error has occurred: {{ error }}</div>
     <div v-else-if="data">
