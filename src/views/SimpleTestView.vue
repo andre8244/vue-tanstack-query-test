@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import { useMutation, useQuery } from '@tanstack/vue-query'
+import { useQuery } from '@tanstack/vue-query'
 import axios from 'axios'
 
-const getUsers = async () => {
-  const { data } = await axios.get('https://reqres.in/api/users?delay=2')
+interface User {
+  id: number
+  email: string
+  first_name: string
+  last_name: string
+  avatar: string
+}
+
+const getUsers = async (): Promise<User[]> => {
+  const { data } = await axios.get('https://reqres.in/api/users?delay=1')
 
   console.log('getUsers', data.data) ////
   return data.data
@@ -13,19 +21,11 @@ const { isPending, isError, isFetching, data, error } = useQuery({
   queryKey: ['users'],
   queryFn: getUsers,
 })
-
-// const mutation = useMutation({ ////
-//   mutationFn: postTodo,
-//   onSuccess: () => {
-//     // Invalidate and refetch
-//     queryClient.invalidateQueries({ queryKey: ['todos'] })
-//   },
-// })
 </script>
 
 <template>
   <div>
-    <h1>Users</h1>
+    <h1>Simple</h1>
     <div v-if="isPending">isPending...</div>
     <div v-if="isFetching">isFetching...</div>
     <div v-if="isError">An error has occurred: {{ error }}</div>
