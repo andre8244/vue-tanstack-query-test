@@ -28,6 +28,9 @@ import { VueQueryDevtools } from '@tanstack/vue-query-devtools'
         <div>
           <RouterLink to="/infiniteQuery">Infinite query</RouterLink>
         </div>
+        <div>
+          <RouterLink to="/mutation">Mutation</RouterLink>
+        </div>
       </nav>
     </div>
   </header>
