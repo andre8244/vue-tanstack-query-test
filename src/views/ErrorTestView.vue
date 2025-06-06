@@ -11,11 +11,15 @@ interface User {
 }
 
 const getResource = async (): Promise<User[]> => {
-  const { data } = await axios.get('https://reqres.in/api/test/99')
+  const { data } = await axios.get('https://reqres.in/api/test/99', {
+    headers: {
+      'x-api-key': 'reqres-free-v1',
+    },
+  })
   return data.data
 }
 
-const { isPending, isError, isFetching, data, error } = useQuery({
+const { isPending, isError, isFetching, data, error, failureReason } = useQuery({
   queryKey: ['resource'],
   queryFn: getResource,
 })

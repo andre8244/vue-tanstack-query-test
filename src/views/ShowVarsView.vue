@@ -11,7 +11,11 @@ interface User {
 }
 
 const getUsers = async (): Promise<User[]> => {
-  const { data } = await axios.get('https://reqres.in/api/users?delay=2')
+  const { data } = await axios.get('https://reqres.in/api/users?delay=2', {
+    headers: {
+      'x-api-key': 'reqres-free-v1',
+    },
+  })
   return data.data
 }
 

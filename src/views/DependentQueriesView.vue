@@ -15,12 +15,20 @@ const userId = computed(() => (users.value?.length ? users.value[0].id : undefin
 const isGetUserQueryEnabled = computed(() => !!userId.value)
 
 const getUsers = async (): Promise<User[]> => {
-  const { data } = await axios.get('https://reqres.in/api/users?delay=1')
+  const { data } = await axios.get('https://reqres.in/api/users?delay=1', {
+    headers: {
+      'x-api-key': 'reqres-free-v1',
+    },
+  })
   return data.data
 }
 
 const getUser = async (userId: number): Promise<User> => {
-  const { data } = await axios.get(`https://reqres.in/api/users/${userId}?delay=1`)
+  const { data } = await axios.get(`https://reqres.in/api/users/${userId}?delay=1`, {
+    headers: {
+      'x-api-key': 'reqres-free-v1',
+    },
+  })
   return data.data
 }
 
